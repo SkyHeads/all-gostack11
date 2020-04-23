@@ -2,6 +2,10 @@
 	<img alt="GoStack" src="assets/GoStackLogo.png" width="200px" />
 </h1>
 
+<h2 align="center">
+	<img alt="GoStack" src="assets/rocketseat.png" width="300px" />
+</h2>
+
 
 <h3 align="center">
    GoStack 11
