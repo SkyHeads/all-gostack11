@@ -6,13 +6,7 @@
 	<img alt="GoStack" src="assets/rocketseat.png" width="300px" />
 </h2>
 
-
-<h3 align="center">
-   GoStack 11
-</h3>
-
-
 ### 📜 Sobre
-Este é um repositório, onde venho adicionando todos os desafios que tenho feito junto ao bootcamp da @rocketseat
+Repositório onde venho adicionando todos os desafios que tenho feito junto ao bootcamp da @rocketseat
 
 
