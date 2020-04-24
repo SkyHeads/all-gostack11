@@ -13,6 +13,6 @@
 
 
 ### 📜 Sobre
-Este é um repositório, onde venho adicionando todos os desafios que tenho feito junto ao bootcamp da @rocketseat
+Repositório onde venho adicionando todos os desafios que tenho feito junto ao bootcamp da @rocketseat
 
 
