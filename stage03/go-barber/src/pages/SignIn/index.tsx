@@ -42,7 +42,10 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        signIn();
+        signIn({
+          email: data.email,
+          password: data.password,
+        });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
