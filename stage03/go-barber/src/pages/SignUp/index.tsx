@@ -1,13 +1,13 @@
 import React, { useCallback, useRef } from 'react';
 
 import { FiArrowLeft, FiMail, FiLock, FiUser } from 'react-icons/fi';
-
 import * as Yup from 'yup';
+import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
-import { Form } from '@unform/web';
-
 import logo from '../../assets/logo.svg';
+
+import getValidationErrors from '../../utils/getValidationErrors';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -33,9 +33,11 @@ const SignUp: React.FC = () => {
         abortEarly: false,
       });
     } catch (err) {
-      formRef.current?.setErrors({
-        name: 'Nome obrigatório',
-      });
+      if (err instanceof Yup.ValidationError) {
+        const errors = getValidationErrors(err);
+
+        formRef.current?.setErrors(errors);
+      }
     }
   }, []);
 
