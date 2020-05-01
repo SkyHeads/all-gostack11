@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 
 import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
+
 import logo from '../../assets/logo.svg';
 
 import Input from '../../components/Input';
@@ -10,36 +12,40 @@ import Button from '../../components/Button';
 
 import { Container, Content, Background } from './styles';
 
-const SignIn: React.FC = () => (
-  <Container>
-    <Content>
-      <img src={logo} alt="Go Barber" />
+const SignIn: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
 
-      <Form onSubmit={() => {}}>
-        <h1>Faça seu logon</h1>
+  return (
+    <Container>
+      <Content>
+        <img src={logo} alt="Go Barber" />
 
-        <Input name="email" icon={FiMail} placeholder="E-mail" />
+        <Form ref={formRef} onSubmit={() => {}}>
+          <h1>Faça seu logon</h1>
 
-        <Input
-          name="password"
-          icon={FiLock}
-          type="password"
-          placeholder="Senha"
-        />
+          <Input name="email" icon={FiMail} placeholder="E-mail" />
 
-        <Button type="submit">Entrar</Button>
+          <Input
+            name="password"
+            icon={FiLock}
+            type="password"
+            placeholder="Senha"
+          />
 
-        <a href="forgot">Esqueci minha senha</a>
-      </Form>
+          <Button type="submit">Entrar</Button>
 
-      <a href="forgot">
-        <FiLogIn />
-        Criar conta
-      </a>
-    </Content>
+          <a href="forgot">Esqueci minha senha</a>
+        </Form>
 
-    <Background />
-  </Container>
-);
+        <a href="forgot">
+          <FiLogIn />
+          Criar conta
+        </a>
+      </Content>
+
+      <Background />
+    </Container>
+  );
+};
 
 export default SignIn;
