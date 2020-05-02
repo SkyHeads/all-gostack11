@@ -18,7 +18,7 @@ const ToastContainer: React.FC = () => {
         </button>
       </Toast>
 
-      <Toast>
+      <Toast type="success">
         <FiAlertCircle size={20} />
 
         <div>
@@ -31,7 +31,7 @@ const ToastContainer: React.FC = () => {
         </button>
       </Toast>
 
-      <Toast>
+      <Toast type="error">
         <FiAlertCircle size={20} />
 
         <div>

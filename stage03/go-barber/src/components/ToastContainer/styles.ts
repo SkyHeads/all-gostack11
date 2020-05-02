@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface ToastProps {
+  type?: string;
+}
+
 export const Container = styled.div`
   position: absolute;
   right: 0;
@@ -8,7 +12,7 @@ export const Container = styled.div`
   overflow: hidden;
 `;
 
-export const Toast = styled.div`
+export const Toast = styled.div<ToastProps>`
   width: 360px;
   position: relative;
   padding: 16px 30px 16px 16px;
