@@ -23,7 +23,6 @@ const ToastContainer: React.FC = () => {
 
         <div>
           <strong>Aconteceu um erro</strong>
-          <p>Não foi possivel fazer login na aplicação</p>
         </div>
 
         <button type="button">
