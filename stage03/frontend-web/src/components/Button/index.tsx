@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
-const Button: React.FC = () => (
-  <button type="button">Esqueci minha senha</button>
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button: React.FC<ButtonProps> = ({ children, ...rest }) => (
+  <button {...rest} type="button">
+    {children}
+  </button>
 );
 
 export default Button;
