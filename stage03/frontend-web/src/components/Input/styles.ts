@@ -49,3 +49,11 @@ export const Container = styled.div<ContainerProps>`
     margin-right: 16px;
   }
 `;
+
+export const Error = styled.div`
+  height: 20px;
+
+  svg {
+    margin: 0;
+  }
+`;
