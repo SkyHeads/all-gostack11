@@ -4,4 +4,6 @@ interface AuthContext {
   name: string;
 }
 
-const authContext = createContext();
+const authContext = createContext<AuthContext>({} as AuthContext);
+
+export default authContext;
