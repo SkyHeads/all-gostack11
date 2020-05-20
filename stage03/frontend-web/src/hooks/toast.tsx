@@ -11,11 +11,11 @@ const ToastContext = createContext<ToastContextData>({} as ToastContextData);
 
 const ToastProvider: React.FC = ({ children }) => {
   const addToast = useCallback(() => {
-    console.log(addToast);
+    console.log('addToast');
   }, []);
 
   const removeToast = useCallback(() => {
-    console.log(removeToast);
+    console.log('removeToast');
   }, []);
 
   return (
