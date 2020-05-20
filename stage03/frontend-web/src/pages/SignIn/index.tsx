@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
-import { useAuth } from '../../hooks/AuthContext';
+import { useAuth } from '../../hooks/auth';
 
 import logoImg from '../../assets/logo.svg';
 
