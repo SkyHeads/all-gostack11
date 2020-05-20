@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-navigation/native": "^5.4.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-react": "^7.19.0",
     "react": "16.11.0",
