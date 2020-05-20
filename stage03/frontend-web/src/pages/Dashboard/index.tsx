@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
-// import { Container } from './styles';
+import { FiPower } from 'react-icons/fi';
 
-const Dashboard: React.FC = () => <h1>Dashboard</h1>;
+import { useAuth } from '../../hooks/auth';
+
+import { Container, LogoutButton } from './styles';
+
+const Dashboard: React.FC = () => {
+  const { signOut } = useAuth();
+
+  const handleLogout = useCallback(() => {
+    signOut();
+  }, [signOut]);
+
+  return (
+    <Container>
+      <LogoutButton onClick={handleLogout}>
+        <FiPower size={60} />
+      </LogoutButton>
+    </Container>
+  );
+};
 
 export default Dashboard;
