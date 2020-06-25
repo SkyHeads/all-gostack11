@@ -1,4 +1,4 @@
-// import AppError from '../../../shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import FakeUserTokensRepository from '../repositories/fakes/FakeUserTokensRepository';
@@ -43,6 +43,15 @@ describe('SendForgotPasswordEmail', () => {
 
     expect(generateHash).toHaveBeenCalledWith('123123');
     expect(updatedUser?.password).toBe('123123');
+  });
+
+  it('should not be able to reset the password with non-existing token', async () => {
+    await expect(
+      resetPassword.execute({
+        password: '123456',
+        token: 'non-existing-token',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 });
 
