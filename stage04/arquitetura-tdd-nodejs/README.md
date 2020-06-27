@@ -27,4 +27,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Express-async-errors](https://www.npmjs.com/package/express-async-errors)
 - [Docker](https://www.docker.com/)
 - [Jest](https://jestjs.io/)
+- [Nodemailer](https://nodemailer.com/about/)
+- [Ethereal](https://ethereal.email/)
+- [Tsyringe](https://github.com/microsoft/tsyringe)
 
