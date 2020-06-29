@@ -94,5 +94,4 @@ describe('SendForgotPasswordEmail', () => {
 // HASH
 // 2h EXPIRAÇÃO
 // userToken inexistente
-
 // user inexistente
