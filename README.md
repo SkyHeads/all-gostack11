@@ -7,6 +7,5 @@
 </h2>
 
 ### 📜 Sobre
-Repositório onde venho adicionando todos os desafios que tenho feito junto ao bootcamp da @rocketseat
-
+Repository where I've been adding all the challenges I've been doing with the @rocketseat bootcamp
 
