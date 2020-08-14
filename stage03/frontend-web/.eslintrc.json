@@ -35,6 +35,7 @@
     "no-unused-expressions": "off",
     "no-restricted-syntax": "off",
     "no-await-in-loop": "off",
+    "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
