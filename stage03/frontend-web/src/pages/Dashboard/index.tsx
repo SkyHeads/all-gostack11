@@ -3,11 +3,12 @@ import React, { useCallback } from 'react';
 import { FiPower } from 'react-icons/fi';
 
 import { useAuth } from '../../hooks/auth';
+import logoImg from '../../assets/logo.svg';
 
-import { Container, LogoutButton } from './styles';
+import { Container, Header, HeaderContent, Profile } from './styles';
 
 const Dashboard: React.FC = () => {
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
 
   const handleLogout = useCallback(() => {
     signOut();
@@ -15,9 +16,21 @@ const Dashboard: React.FC = () => {
 
   return (
     <Container>
-      <LogoutButton onClick={handleLogout}>
-        <FiPower size={60} />
-      </LogoutButton>
+      <Header>
+        <HeaderContent>
+          <img src={logoImg} alt="GoBarber" />
+          <Profile>
+            <img src={user.avatar_url} alt={user.name} />
+            <div>
+              <span>Bem-vindo,</span>
+              <strong>{user.name}</strong>
+            </div>
+          </Profile>
+          <button type="button" onClick={handleLogout}>
+            <FiPower />
+          </button>
+        </HeaderContent>
+      </Header>
     </Container>
   );
 };
