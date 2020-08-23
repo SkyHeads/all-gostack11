@@ -1,14 +1,62 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useCallback } from 'react';
+import {
+  Image,
+  View,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 
-import { Container } from './styles';
+import Icon from 'react-native-vector-icons/Feather';
+import { useNavigation } from '@react-navigation/native';
 
-const signup: React.FC = () => {
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+
+import { Container, Title, BackToSignIn, BackToSignInText } from './styles';
+
+import logoImg from '../../assets/logo.png';
+
+const SignUp: React.FC = () => {
+  const navigation = useNavigation();
+
+  const helloWorld = useCallback(() => {
+    console.log('hello');
+  }, []);
+
   return (
-    <View>
-      <Text>signup</Text>
-    </View>
+    <>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        style={{ flex: 1 }}
+        enabled
+      >
+        <ScrollView
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={{ flex: 1 }}
+        >
+          <Container>
+            <Image source={logoImg} />
+
+            <View>
+              <Title>Crie sua conta</Title>
+            </View>
+
+            <Input name="name" icon="user" placeholder="Nome" />
+            <Input name="email" icon="mail" placeholder="E-mail" />
+            <Input name="password" icon="lock" placeholder="Senha" />
+
+            <Button onPress={helloWorld}>Entrar</Button>
+          </Container>
+        </ScrollView>
+      </KeyboardAvoidingView>
+
+      <BackToSignIn onPress={() => navigation.navigate('SignIn')}>
+        <Icon name="arrow-left" size={20} color="#fff" />
+        <BackToSignInText>Voltar para logon</BackToSignInText>
+      </BackToSignIn>
+    </>
   );
 };
 
-export default signup;
+export default SignUp;
