@@ -6,11 +6,15 @@ import {
   KeyboardAvoidingView,
   Platform,
   TextInput,
+  Alert,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import { FormHandles } from '@unform/core';
+
+import * as Yup from 'yup';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -25,6 +29,12 @@ import {
 
 import logoImg from '../../assets/logo.png';
 
+interface SignUpFormData {
+  name: string;
+  email: string;
+  password: string;
+}
+
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
@@ -32,8 +42,35 @@ const SignUp: React.FC = () => {
   const emailInputRef = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
 
-  const handleSignUp = useCallback((data: object) => {
-    console.log(data);
+  const handleSignUp = useCallback(async (data: SignUpFormData) => {
+    try {
+      formRef.current?.setErrors({});
+
+      const schema = Yup.object().shape({
+        name: Yup.string().required('Nome obrigatório'),
+        email: Yup.string()
+          .email('Digite um e-mail válido')
+          .required('E-mail obrigatório'),
+        password: Yup.string().min(6, 'Senha obrigatória'),
+      });
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      // await api.post('/users', data);
+
+      // history.push('/');
+    } catch (err) {
+      const errors = getValidationErrors(err);
+
+      formRef.current?.setErrors(errors);
+    }
+
+    Alert.alert(
+      'Erro no cadastro',
+      'Ocorreu um erro ao tentar se cadastrar, cheque suas credenciais e tente novamente.',
+    );
   }, []);
 
   return (

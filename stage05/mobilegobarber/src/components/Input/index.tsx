@@ -28,7 +28,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
   ref,
 ) => {
   const inputElementRef = useRef<any>(null);
-  const { registerField, defaultValue, fieldName, error } = useField(name);
+  const { registerField, defaultValue = '', fieldName, error } = useField(name);
   const inputValueRef = useRef<InputValueReference>({ value: defaultValue });
 
   const [isFocused, setIsFocused] = useState(false);
@@ -55,11 +55,11 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
       name: fieldName,
       ref: inputValueRef.current,
       path: 'value',
-      setValue(ref: any, value) {
+      setValue(ref: any, value: string) {
         inputValueRef.current.value = value;
         inputElementRef.current.setNativeProps({ text: value });
       },
-      clearValue() {
+      clearValue(ref: any) {
         inputValueRef.current.value = '';
         inputElementRef.current.clear();
       },
@@ -67,7 +67,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
   }, [registerField, fieldName]);
 
   return (
-    <Container isFocused={isFocused}>
+    <Container isFocused={isFocused} isErrored={!!error}>
       <Icon
         name={icon}
         size={20}
