@@ -55,11 +55,11 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
       name: fieldName,
       ref: inputValueRef.current,
       path: 'value',
-      setValue(ref: any, value: string) {
+      setValue(value: string) {
         inputValueRef.current.value = value;
         inputElementRef.current.setNativeProps({ text: value });
       },
-      clearValue(ref: any) {
+      clearValue() {
         inputValueRef.current.value = '';
         inputElementRef.current.clear();
       },
