@@ -24,7 +24,7 @@ class ListProvidersService {
       `providers-list:${user_id}`,
     );
 
-    // let users;
+    // let users = null;
 
     if (!users) {
       users = await this.usersRepository.findAllProviders({
