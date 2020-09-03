@@ -1,20 +1,40 @@
-import React from 'react';
-import { View, Button } from 'react-native';
+import React, { useCallback } from 'react';
+import { View } from 'react-native';
 
-// import { Container } from './styles';
+import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../../hooks/auth';
 
-const Dashboard: React.FC = () => {
-  const { signOut } = useAuth();
+import {
+  Container,
+  Header,
+  HeaderTitle,
+  UserName,
+  ProfileButton,
+  UserAvatar,
+} from './styles';
 
-  function logout() {
-    signOut();
-  }
+const Dashboard: React.FC = () => {
+  const { signOut, user } = useAuth();
+  const { navigate } = useNavigation();
+
+  const navigateToProfile = useCallback(() => {
+    navigate('Profile');
+  }, [navigate]);
 
   return (
-    <View>
-      <Button title="logout" onPress={logout} />
-    </View>
+    <Container>
+      <Header>
+        <HeaderTitle>
+          Bem-vindo,
+          {'\n'}
+          <UserName>{user.name}</UserName>
+        </HeaderTitle>
+
+        <ProfileButton onPress={navigateToProfile}>
+          <UserAvatar source={{ uri: user.avatar_url }} />
+        </ProfileButton>
+      </Header>
+    </Container>
   );
 };
 export default Dashboard;
