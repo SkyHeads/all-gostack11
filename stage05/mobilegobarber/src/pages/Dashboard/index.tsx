@@ -20,6 +20,7 @@ import {
   ProviderName,
   ProviderMeta,
   ProviderMetaText,
+  ProvidersListTitle,
 } from './styles';
 
 export interface Provider {
@@ -43,7 +44,14 @@ const Dashboard: React.FC = () => {
   const navigateToProfile = useCallback(() => {
     // navigate('Profile');
     signOut();
-  }, [navigate]);
+  }, [signOut]);
+
+  const navigatToCreateAppointment = useCallback(
+    (providerId: string) => {
+      navigate('CreateAppointment', { providerId });
+    },
+    [navigate],
+  );
 
   return (
     <Container>
@@ -62,8 +70,13 @@ const Dashboard: React.FC = () => {
       <ProvidersList
         data={providers}
         keyExtractor={provider => provider.id}
+        ListHeaderComponent={
+          <ProvidersListTitle>Cabeleireiros</ProvidersListTitle>
+        }
         renderItem={({ item: provider }) => (
-          <ProviderContainer onPress={() => {}}>
+          <ProviderContainer
+            onPress={() => navigatToCreateAppointment(provider.id)}
+          >
             <ProviderAvatar source={{ uri: provider.avatar_url }} />
 
             <ProviderInfo>
